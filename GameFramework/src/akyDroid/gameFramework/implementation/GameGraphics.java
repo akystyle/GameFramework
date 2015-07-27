@@ -72,7 +72,7 @@ public class GameGraphics implements Graphics {
 		else
 			format = ImageFormat.ARGB8888;
 
-		return new AndroidImage(myBitmap, format);
+		return new GameImage(myBitmap, format);
 	}
 
 	@Override
@@ -119,13 +119,13 @@ public class GameGraphics implements Graphics {
 		myDstRect.right = x + srcWidth;
 		myDstRect.bottom = y + srcHeight;
 
-		myCanvas.drawBitmap(((AndroidImage) Image).bitmap, mySrcRect,
+		myCanvas.drawBitmap(((GameImage) Image).bitmap, mySrcRect,
 				myDstRect, null);
 	}
 
 	@Override
 	public void drawImage(Image Image, int x, int y) {
-		myCanvas.drawBitmap(((AndroidImage) Image).bitmap, x, y, null);
+		myCanvas.drawBitmap(((GameImage) Image).bitmap, x, y, null);
 	}
 
 	public void drawScaledImage(Image Image, int x, int y, int width,
@@ -141,7 +141,7 @@ public class GameGraphics implements Graphics {
 		myDstRect.right = x + width;
 		myDstRect.bottom = y + height;
 
-		myCanvas.drawBitmap(((AndroidImage) Image).bitmap, mySrcRect,
+		myCanvas.drawBitmap(((GameImage) Image).bitmap, mySrcRect,
 				myDstRect, null);
 
 	}

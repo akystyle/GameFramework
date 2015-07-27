@@ -18,7 +18,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 public abstract class GameMain extends Activity implements Game {
-	AndroidFastRenderView myRenderView;
+	GameFastRenderView myRenderView;
 	Graphics myGraphics;
 	Audio myAudio;
 	Input myInput;
@@ -46,11 +46,11 @@ public abstract class GameMain extends Activity implements Game {
         float scaleY = (float) frameBufferHeight
                 / getWindowManager().getDefaultDisplay().getHeight();
 
-        myRenderView = new AndroidFastRenderView(this, frameBuffer);
-        myGraphics = new AndroidGraphics(getAssets(), frameBuffer);
-        myFileIO = new AndroidFileIO(this);
-        myAudio = new AndroidAudio(this);
-        myInput = new AndroidInput(this, myRenderView, scaleX, scaleY);
+        myRenderView = new GameFastRenderView(this, frameBuffer);
+        myGraphics = new GameGraphics(getAssets(), frameBuffer);
+        myFileIO = new GameFileIO(this);
+        myAudio = new GameAudio(this);
+        myInput = new GameInput(this, myRenderView, scaleX, scaleY);
         myScreen = getInitScreen();
         setContentView(myRenderView);
         
