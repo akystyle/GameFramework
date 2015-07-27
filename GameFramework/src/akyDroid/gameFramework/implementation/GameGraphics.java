@@ -15,7 +15,7 @@ import android.graphics.Paint.Style;
 import android.graphics.Rect;
 import android.media.Image;
 
-public class AndroidGraphics implements Graphics {
+public class GameGraphics implements Graphics {
 	AssetManager myAssets;
 	Bitmap myFrameBuffer;
 	Canvas myCanvas;
@@ -23,7 +23,7 @@ public class AndroidGraphics implements Graphics {
 	Rect mySrcRect = new Rect();
 	Rect myDstRect = new Rect();
 
-	public AndroidGraphics(AssetManager assets, Bitmap frameBuffer) {
+	public GameGraphics(AssetManager assets, Bitmap frameBuffer) {
 		this.myAssets = assets;
 		this.myFrameBuffer = frameBuffer;
 		this.myCanvas = new Canvas(frameBuffer);
