@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import akyDroid.gameFramework.Input.TouchEvent;
+import akyDroid.gameFramework.Pool.PoolObjectFactory;
 import akyDroid.gameFramework.Pool;
 import android.view.MotionEvent;
 import android.view.View;
@@ -22,13 +23,27 @@ private static final int MAX_TOUCHPOINTS = 10;
     float myScaleY;
     
     public MultiTouchHandler(View myView, float scaleX, float scaleY) {
-
-    	
+    	PoolObjectFactory<TouchEvent> myFactory = new PoolObjectFactory<TouchEvent>() {
+    		@Override
+    		public TouchEvent createObject(){
+    			return new TouchEvent();
+    		}
+		};
+		myTouchEventPool = new Pool<TouchEvent>(myFactory, 100);
+		myView.setOnTouchListener(this);
+		this.myScaleX = scaleX;
+		this.myScaleY = scaleY;
 	}
     
 	@Override
 	public boolean onTouch(View v, MotionEvent event) {
-
+		synchronized (this) {
+			int action = event.getAction() & MotionEvent.ACTION_MASK;
+			int pointerIndex = (event.getAction() & MotionEvent.ACTION_POINTER_INDEX_MASK) >> MotionEvent.ACTION_POINTER_INDEX_SHIFT;
+			int pointerCount = event.getPointerCount();
+			
+			
+		}
 		
 		
 		return false;
