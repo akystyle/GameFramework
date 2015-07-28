@@ -3,8 +3,8 @@
  */
 package akyDroid.gameFramework;
 
+import akyDroid.gameFramework.implementation.GameImage;
 import android.graphics.Paint;
-import android.media.Image;
 
 /**
  * @author agl
@@ -15,7 +15,7 @@ public interface Graphics {
 		ARGB8888, ARGB4444, RGB565
 	}
 
-	public Image newImage(String fileName, ImageFormat format);
+	public GameImage newImage(String fileName, ImageFormat format);
 
 	public void clearScreen(int color);
 
@@ -23,10 +23,10 @@ public interface Graphics {
 
 	public void drawRect(int x, int y, int width, int height, int color);
 
-	public void drawImage(Image image, int x, int y, int srcX, int srcY,
+	public void drawImage(GameImage image, int x, int y, int srcX, int srcY,
 			int srcWidth, int srcHeight);
 
-	void drawImage(Image Image, int x, int y);
+	void drawImage(GameImage Image, int x, int y);
 
 	void drawString(String text, int x, int y, Paint paint);
 

@@ -14,7 +14,6 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.graphics.Rect;
-import android.media.Image;
 
 public class GameGraphics implements Graphics {
 	AssetManager myAssets;
@@ -32,7 +31,7 @@ public class GameGraphics implements Graphics {
 	}
 
 	@Override
-	public Image newImage(String fileName, ImageFormat format) {
+	public GameImage newImage(String fileName, ImageFormat format) {
 		Config myConfig = null;
 		if (format == ImageFormat.RGB565)
 			myConfig = Config.RGB_565;
@@ -108,7 +107,7 @@ public class GameGraphics implements Graphics {
 
 	}
 
-	public void drawImage(Image image, int x, int y, int srcX, int srcY,
+	public void drawImage(GameImage Image, int x, int y, int srcX, int srcY,
 			int srcWidth, int srcHeight) {
 		mySrcRect.left = srcX;
 		mySrcRect.top = srcY;
@@ -120,16 +119,16 @@ public class GameGraphics implements Graphics {
 		myDstRect.right = x + srcWidth;
 		myDstRect.bottom = y + srcHeight;
 
-		myCanvas.drawBitmap(((GameImage) Image).myBitmap, mySrcRect,
+		myCanvas.drawBitmap(Image.myBitmap, mySrcRect,
 				myDstRect, null);
 	}
 
 	@Override
-	public void drawImage(Image Image, int x, int y) {
-		myCanvas.drawBitmap(((GameImage) Image).myBitmap, x, y, null);
+	public void drawImage(GameImage Image, int x, int y) {
+		myCanvas.drawBitmap(Image.myBitmap, x, y, null);
 	}
 
-	public void drawScaledImage(Image Image, int x, int y, int width,
+	public void drawScaledImage(GameImage Image, int x, int y, int width,
 			int height, int srcX, int srcY, int srcWidth, int srcHeight) {
 
 		mySrcRect.left = srcX;
@@ -142,7 +141,7 @@ public class GameGraphics implements Graphics {
 		myDstRect.right = x + width;
 		myDstRect.bottom = y + height;
 
-		myCanvas.drawBitmap(((GameImage) Image).myBitmap, mySrcRect,
+		myCanvas.drawBitmap(Image.myBitmap, mySrcRect,
 				myDstRect, null);
 
 	}
