@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import akyDroid.gameFramework.Graphics;
+import akyDroid.gameFramework.Image;
 import akyDroid.gameFramework.implementation.GameImage;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
@@ -107,7 +108,7 @@ public class GameGraphics implements Graphics {
 
 	}
 
-	public void drawImage(GameImage Image, int x, int y, int srcX, int srcY,
+	public void drawImage(Image Image, int x, int y, int srcX, int srcY,
 			int srcWidth, int srcHeight) {
 		mySrcRect.left = srcX;
 		mySrcRect.top = srcY;
@@ -119,16 +120,16 @@ public class GameGraphics implements Graphics {
 		myDstRect.right = x + srcWidth;
 		myDstRect.bottom = y + srcHeight;
 
-		myCanvas.drawBitmap(Image.myBitmap, mySrcRect,
+		myCanvas.drawBitmap(((GameImage)Image).myBitmap, mySrcRect,
 				myDstRect, null);
 	}
 
 	@Override
-	public void drawImage(GameImage Image, int x, int y) {
-		myCanvas.drawBitmap(Image.myBitmap, x, y, null);
+	public void drawImage(Image Image, int x, int y) {
+		myCanvas.drawBitmap(((GameImage)Image).myBitmap, x, y, null);
 	}
 
-	public void drawScaledImage(GameImage Image, int x, int y, int width,
+	public void drawScaledImage(Image Image, int x, int y, int width,
 			int height, int srcX, int srcY, int srcWidth, int srcHeight) {
 
 		mySrcRect.left = srcX;
@@ -141,7 +142,7 @@ public class GameGraphics implements Graphics {
 		myDstRect.right = x + width;
 		myDstRect.bottom = y + height;
 
-		myCanvas.drawBitmap(Image.myBitmap, mySrcRect,
+		myCanvas.drawBitmap(((GameImage)Image).myBitmap, mySrcRect,
 				myDstRect, null);
 
 	}
