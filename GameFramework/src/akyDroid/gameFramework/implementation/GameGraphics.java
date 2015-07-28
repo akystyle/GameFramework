@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import akyDroid.gameFramework.Graphics;
+import akyDroid.gameFramework.implementation.GameImage;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -119,13 +120,13 @@ public class GameGraphics implements Graphics {
 		myDstRect.right = x + srcWidth;
 		myDstRect.bottom = y + srcHeight;
 
-		myCanvas.drawBitmap(((GameImage) Image).bitmap, mySrcRect,
+		myCanvas.drawBitmap(((GameImage) Image).myBitmap, mySrcRect,
 				myDstRect, null);
 	}
 
 	@Override
 	public void drawImage(Image Image, int x, int y) {
-		myCanvas.drawBitmap(((GameImage) Image).bitmap, x, y, null);
+		myCanvas.drawBitmap(((GameImage) Image).myBitmap, x, y, null);
 	}
 
 	public void drawScaledImage(Image Image, int x, int y, int width,
@@ -141,7 +142,7 @@ public class GameGraphics implements Graphics {
 		myDstRect.right = x + width;
 		myDstRect.bottom = y + height;
 
-		myCanvas.drawBitmap(((GameImage) Image).bitmap, mySrcRect,
+		myCanvas.drawBitmap(((GameImage) Image).myBitmap, mySrcRect,
 				myDstRect, null);
 
 	}
