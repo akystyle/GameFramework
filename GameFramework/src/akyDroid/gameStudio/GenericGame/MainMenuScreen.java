@@ -1,4 +1,4 @@
-package akyDroid.gameStudio.friWreckringOris;
+package akyDroid.gameStudio.GenericGame;
 
 import java.util.List;
 
@@ -40,7 +40,7 @@ public class MainMenuScreen extends Screen{
 	@Override
 	public void paint(float deltaTime) {
 		Graphics g = game.getGraphics();
-		g.drawImage(FriWreckringOrisAssets.myMenu, 0, 0);
+		g.drawImage(Assets.myMenu, 0, 0);
 		
 	}
 

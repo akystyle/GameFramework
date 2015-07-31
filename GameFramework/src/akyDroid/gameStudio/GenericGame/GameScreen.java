@@ -1,8 +1,9 @@
-package akyDroid.gameStudio.friWreckringOris;
+package akyDroid.gameStudio.GenericGame;
 
 import java.util.List;
 
 import akyDroid.gameFramework.Game;
+import akyDroid.gameFramework.Graphics;
 import akyDroid.gameFramework.Input.TouchEvent;
 import akyDroid.gameFramework.Screen;
 import android.graphics.Color;
@@ -112,19 +113,65 @@ public class GameScreen extends Screen {
 
 	@Override
 	public void paint(float deltaTime) {
-		// TODO Auto-generated method stub
+        Graphics g = game.getGraphics();
+
+        // First draw the game elements.
+
+        // Example:
+        // g.drawImage(Assets.background, 0, 0);
+        // g.drawImage(Assets.character, characterX, characterY);
+
+        // Secondly, draw the UI above the game elements.
+        if (state == GameState.Ready)
+            drawReadyUI();
+        if (state == GameState.Running)
+            drawRunningUI();
+        if (state == GameState.Paused)
+            drawPausedUI();
+        if (state == GameState.GameOver)
+            drawGameOverUI();
 
 	}
 
-	private void GameRestart() {
-		// TODO Auto-generated method stub
+	private void drawGameOverUI() {
+        Graphics g = game.getGraphics();
+        g.drawRect(0, 0, 1281, 801, Color.BLACK);
+        g.drawString("GAME OVER", 640, 300, myPainter);
+	}
+
+	private void drawPausedUI() {
+        Graphics g = game.getGraphics();
+        // Darken the entire screen so you can display the Paused screen.
+        g.drawARGB(155, 0, 0, 0);
+	}
+
+	private void drawRunningUI() {
+		Graphics g = game.getGraphics();
 		
+	}
+
+	private void drawReadyUI() {
+        Graphics g = game.getGraphics();
+
+        g.drawARGB(155, 0, 0, 0);
+        g.drawString("Tap each side of the screen to move in that direction.",
+                640, 300, myPainter);
+		
+	}
+
+	private void GameRestart() {
+		// Set all variables to null. You will be recreating them in the
+        // constructor.
+        myPainter = null;
+
+        // Call garbage collector to clean up memory.
+        System.gc();
 	}
 	
 	@Override
 	public void pause() {
-		// TODO Auto-generated method stub
-
+		if(state == GameState.Running)
+			state = GameState.Paused;
 	}
 
 	
@@ -143,7 +190,7 @@ public class GameScreen extends Screen {
 	@Override
 	public void backButton() {
 		// TODO Auto-generated method stub
-
+		pause();
 	}
 
 }

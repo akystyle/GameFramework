@@ -1,11 +1,11 @@
-package akyDroid.gameStudio.friWreckringOris;
+package akyDroid.gameStudio.GenericGame;
 
 import akyDroid.gameFramework.*;
 import akyDroid.gameFramework.Graphics.ImageFormat;
 
-public class FriWreckringOrisLoadingScreen extends Screen{
+public class LoadingScreen extends Screen{
 
-	public FriWreckringOrisLoadingScreen(Game game) {
+	public LoadingScreen(Game game) {
 		super(game);
 	}
 
@@ -13,8 +13,8 @@ public class FriWreckringOrisLoadingScreen extends Screen{
 	public void update(float deltaTime) {
 		// TODO Auto-generated method stub
 		Graphics myGraphics = game.getGraphics();
-		FriWreckringOrisAssets.myMenu = myGraphics.newImage("menu.jpg", ImageFormat.RGB565);
-		FriWreckringOrisAssets.myClickSound = game.getAudio().createSound("click.ogg");
+		Assets.myMenu = myGraphics.newImage("menu.jpg", ImageFormat.RGB565);
+		Assets.myClickSound = game.getAudio().createSound("click.ogg");
 		
 		game.setScreen(new MainMenuScreen(game));
 	}

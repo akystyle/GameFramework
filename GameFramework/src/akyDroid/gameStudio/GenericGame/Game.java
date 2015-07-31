@@ -1,13 +1,13 @@
-package akyDroid.gameStudio.friWreckringOris;
+package akyDroid.gameStudio.GenericGame;
 
 import akyDroid.gameFramework.Screen;
 import akyDroid.gameFramework.implementation.GameMain;
 
-public class FriWreckringOrisGame extends GameMain{
+public class Game extends GameMain{
 
 	@Override
 	public Screen getInitScreen() {
-		return new FriWreckringOrisLoadingScreen(this);
+		return new LoadingScreen(this);
 	}
 	
 	@Override
